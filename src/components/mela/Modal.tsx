@@ -62,6 +62,9 @@ export function Modal({
   );
 }
 
+export const inputCls =
+  "w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition";
+
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="block mb-4">
