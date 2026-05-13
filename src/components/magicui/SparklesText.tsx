@@ -110,9 +110,7 @@ export default function SparklesText({
   }, [colors.first, colors.second, sparklesCount]);
 
   return (
-    <Component
-      className={cn("relative inline-block pb-2", className)}
-    >
+    <Component className={cn("relative inline-block pb-2", className)}>
       <AnimatePresence>
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />

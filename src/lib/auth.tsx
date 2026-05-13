@@ -35,7 +35,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       email,
       name:
         opts?.name ||
-        email.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+        email
+          .split("@")[0]
+          .replace(/[._-]/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase()),
       org: opts?.org || orgDefaults[role],
       role,
     };
@@ -84,14 +87,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const add = (id: string, qty = 1) =>
     setItems((p) => {
       const ex = p.find((i) => i.id === id);
-      return ex ? p.map((i) => (i.id === id ? { ...i, qty: i.qty + qty } : i)) : [...p, { id, qty }];
+      return ex
+        ? p.map((i) => (i.id === id ? { ...i, qty: i.qty + qty } : i))
+        : [...p, { id, qty }];
     });
   const remove = (id: string) => setItems((p) => p.filter((i) => i.id !== id));
-  const update = (id: string, qty: number) => setItems((p) => p.map((i) => (i.id === id ? { ...i, qty: Math.max(1, qty) } : i)));
+  const update = (id: string, qty: number) =>
+    setItems((p) => p.map((i) => (i.id === id ? { ...i, qty: Math.max(1, qty) } : i)));
   const clear = () => setItems([]);
   const count = items.reduce((s, i) => s + i.qty, 0);
 
-  return <CartC.Provider value={{ items, add, remove, update, clear, count }}>{children}</CartC.Provider>;
+  return (
+    <CartC.Provider value={{ items, add, remove, update, clear, count }}>{children}</CartC.Provider>
+  );
 }
 
 export function useCart() {

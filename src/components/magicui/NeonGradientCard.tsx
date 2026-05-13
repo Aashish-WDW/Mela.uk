@@ -103,10 +103,7 @@ export default function NeonGradientCard({
           "--card-height": `${dimensions.height}px`,
         } as React.CSSProperties
       }
-      className={cn(
-        "relative z-10 w-full rounded-[var(--border-radius)]",
-        className,
-      )}
+      className={cn("relative z-10 w-full rounded-[var(--border-radius)]", className)}
       {...props}
     >
       <div
